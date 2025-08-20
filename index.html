@@ -13,11 +13,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
         .container {
             display: flex;
             flex-direction: column; /* Stack vertically */
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
         .title {
             font-size: 2rem;
@@ -26,6 +29,9 @@
             font-weight: bold;
             margin-bottom: 32px;
             text-align: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
         }
         .row {
             display: flex;
@@ -48,11 +54,24 @@
         .invite-link:hover {
             text-shadow: 0 0 24px #00f0ff, 0 0 48px #8000ff;
         }
+        .popup-img {
+            position: fixed;
+            width: 120px;
+            height: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s, transform 0.7s;
+            z-index: 10;
+        }
+        .popup-img.show {
+            opacity: 1;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="title">Nessie Bot Support Server</div>
+        <div class="title" id="popup-trigger">Nessie Bot Support Server</div>
         <div class="row">
             <!-- Discord PNG Logo -->
             <img class="discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/500/non_2x/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo">
@@ -61,5 +80,54 @@
             </a>
         </div>
     </div>
+    <!-- Popup Nessie image -->
+    <img id="popup-img" class="popup-img" src="nessie_apex.png" alt="Nessie" />
+    <script>
+        // Possible screen sides
+        const sides = ['left', 'right', 'top', 'bottom'];
+        const popupImg = document.getElementById('popup-img');
+        const trigger = document.getElementById('popup-trigger');
+
+        function getRandomSide() {
+            return sides[Math.floor(Math.random() * sides.length)];
+        }
+
+        function showPopup() {
+            const side = getRandomSide();
+            let x = 0, y = 0;
+            const padding = 30;
+            const imgWidth = popupImg.width || 120;
+            const imgHeight = popupImg.height || 120;
+
+            switch (side) {
+                case 'left':
+                    x = padding;
+                    y = Math.random() * (window.innerHeight - imgHeight - padding * 2) + padding;
+                    break;
+                case 'right':
+                    x = window.innerWidth - imgWidth - padding;
+                    y = Math.random() * (window.innerHeight - imgHeight - padding * 2) + padding;
+                    break;
+                case 'top':
+                    x = Math.random() * (window.innerWidth - imgWidth - padding * 2) + padding;
+                    y = padding;
+                    break;
+                case 'bottom':
+                    x = Math.random() * (window.innerWidth - imgWidth - padding * 2) + padding;
+                    y = window.innerHeight - imgHeight - padding;
+                    break;
+            }
+            popupImg.style.left = `${x}px`;
+            popupImg.style.top = `${y}px`;
+            popupImg.classList.add('show');
+        }
+
+        function hidePopup() {
+            popupImg.classList.remove('show');
+        }
+
+        trigger.addEventListener('mouseenter', showPopup);
+        trigger.addEventListener('mouseleave', hidePopup);
+    </script>
 </body>
 </html>
