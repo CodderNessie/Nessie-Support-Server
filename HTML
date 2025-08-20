@@ -1,1 +1,65 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Invite</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            /* Neon purple gradient background */
+            background: linear-gradient(135deg, #2a0057 0%, #8000ff 100%);
+            box-shadow: 0 0 80px 10px #8000ff inset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column; /* Stack vertically */
+            align-items: center;
+        }
+        .title {
+            font-size: 2rem;
+            color: #00ff66;
+            text-shadow: 0 0 12px #00ff66, 0 0 24px #00ff66, 0 0 8px #00ff66;
+            font-weight: bold;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .row {
+            display: flex;
+            align-items: center;
+        }
+        .discord-logo {
+            width: 64px;
+            height: 64px;
+            margin-right: 24px;
+            object-fit: contain;
+        }
+        .invite-link {
+            font-size: 1.5rem;
+            color: #12349b;
+            text-shadow: 0 0 12px #00f0ff, 0 0 24px #8000ff, 0 0 8px #00f0ff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: text-shadow 0.2s;
+        }
+        .invite-link:hover {
+            text-shadow: 0 0 24px #00f0ff, 0 0 48px #8000ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Nessie Bot Support Server</div>
+        <div class="row">
+            <!-- Discord PNG Logo -->
+            <img class="discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/500/non_2x/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo">
+            <a class="invite-link" href="https://discord.com/invite/2KgtGY9fNm" target="_blank">
+                https://discord.com/invite/2KgtGY9fNm
+            </a>
+        </div>
+    </div>
+</body>
+</html>
