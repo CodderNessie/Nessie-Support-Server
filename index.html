@@ -24,7 +24,7 @@
         }
         .title {
             font-size: 2rem;
-            color: #00ff66;
+            color: #00ff66; 
             text-shadow: 0 0 12px #00ff66, 0 0 24px #00ff66, 0 0 8px #00ff66;
             font-weight: bold;
             margin-bottom: 32px;
@@ -67,6 +67,16 @@
             opacity: 1;
             transform: scale(1.1);
         }
+        .nessie-water-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 180px; /* Adjust size as needed */
+            height: auto;
+            z-index: 20;
+            pointer-events: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +92,8 @@
     </div>
     <!-- Popup Nessie image -->
     <img id="popup-img" class="popup-img" src="nessie_apex.png" alt="Nessie" />
+    <!-- Nessie in water image at top-left -->
+    <img src="nessie in water.png" alt="Nessie in Water" class="nessie-water-img" />
     <script>
         // Possible screen sides
         const sides = ['left', 'right', 'top', 'bottom'];
